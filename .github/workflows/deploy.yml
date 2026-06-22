@@ -22,7 +22,7 @@ jobs:
         with:
           context: ./backend
           push: true
-          tags: gasonramon/realtime_chat_rust:latest
+          tags: jasonleijdekker/realtime_chat_rust:latest
 
   build-frontend:
     runs-on: ubuntu-latest
@@ -40,7 +40,7 @@ jobs:
         with:
           context: ./frontend
           push: true
-          tags: gasonramon/realtime_chat_rust_frontend:latest
+          tags: jasonleijdekker/realtime_chat_rust_frontend:latest
 
   deploy:
     runs-on: ubuntu-latest
