@@ -1,0 +1,47 @@
+<div class="auth-container">
+  <div class="card">
+    <h2>Welcome back</h2>
+    <p class="subtitle">Sign in to your account</p>
+
+    <div *ngIf="info" class="alert info">{{ info }}</div>
+    <div *ngIf="error" class="alert error">{{ error }}</div>
+
+    <form *ngIf="!twoFaRequired" (ngSubmit)="submit()" novalidate class="form">
+      <div class="field">
+        <label for="username">Username</label>
+        <input id="username" name="username" [(ngModel)]="username" required />
+      </div>
+
+      <div class="field">
+        <label for="password">Password</label>
+        <input id="password" name="password" type="password" [(ngModel)]="password" required />
+      </div>
+
+      <button type="submit" class="btn primary" [disabled]="loading">
+        {{ loading ? 'Signing in…' : 'Sign in' }}
+      </button>
+
+      <div class="links">
+        <a routerLink="/register">Create an account</a>
+        <span style="opacity:.6; margin: 0 6px;">·</span>
+        <a routerLink="/forgot">Forgot password?</a>
+      </div>
+    </form>
+
+    <form *ngIf="twoFaRequired" (ngSubmit)="verifyOtp()" novalidate class="form">
+      <div class="field">
+        <label for="otp">Verification code</label>
+        <input id="otp" name="otp" inputmode="numeric" maxlength="6" placeholder="123456" [(ngModel)]="otpCode" required />
+        <small class="hint">Enter the 6-digit code sent to your email</small>
+      </div>
+
+      <button type="submit" class="btn primary" [disabled]="loading || !otpCode">
+        {{ loading ? 'Verifying…' : 'Verify & Continue' }}
+      </button>
+
+      <div class="links">
+        <a routerLink="/login" (click)="$event.preventDefault(); twoFaRequired=false; error=null; info=null;">Back to login</a>
+      </div>
+    </form>
+  </div>
+</div>

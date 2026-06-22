@@ -1,0 +1,43 @@
+<nav>
+  <!-- Show login/register when NOT logged in -->
+  <ng-container *ngIf="!(auth.user$ | async)">
+    <button
+      [routerLink]="['/login']"
+      routerLinkActive="active"
+      aria-current="page"
+    >
+      <p>login</p>
+    </button>
+    <button
+      [routerLink]="['/register']"
+      routerLinkActive="active"
+      aria-current="page"
+    >
+      <p>register</p>
+    </button>
+  </ng-container>
+
+  <!-- Show account (and chat) when logged in -->
+  <ng-container *ngIf="auth.user$ | async as user">
+    <button
+      [routerLink]="['/account']"
+      routerLinkActive="active"
+      aria-current="page"
+    >
+      <p>account</p>
+    </button>
+    <button
+      [routerLink]="['/chat']"
+      routerLinkActive="active"
+      aria-current="page"
+    >
+      <p>chat</p>
+    </button>
+    <button type="button" (click)="onLogout()">
+      <p>logout</p>
+    </button>
+  </ng-container>
+</nav>
+
+<router-outlet></router-outlet>
+

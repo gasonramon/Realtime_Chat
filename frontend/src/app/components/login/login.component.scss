@@ -1,0 +1,8 @@
+:host { display: block; }
+
+/* Keep component-specific tweaks; base visuals come from global styles */
+.card { max-width: 420px; }
+.links { margin-top: 8px; text-align: center; }
+.links a { color: var(--matrix-green); text-decoration: none; }
+.links a:hover { text-decoration: underline; }
+.hint { color: #8fe8ba; font-size: 12px; opacity: .85; }

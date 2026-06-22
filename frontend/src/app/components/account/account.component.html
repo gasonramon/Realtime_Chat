@@ -1,0 +1,31 @@
+<section style="padding: 1rem; max-width: 720px; margin: 0 auto;">
+  <h2>Account</h2>
+  <div *ngIf="auth.user$ | async as user; else noUser">
+    <p><strong>Name:</strong> {{ user?.name }}</p>
+    <p><strong>Email:</strong> {{ user?.email }}</p>
+
+    <hr />
+    <h3>Message Retention</h3>
+    <p class="note">Choose how long new messages remain before auto-deletion.</p>
+    <form (ngSubmit)="saveTtl()" class="settings-row">
+      <label class="settings-label">Default TTL</label>
+      <div class="settings-field">
+        <select [(ngModel)]="ttl" name="ttl" class="settings-select">
+          <option [value]="3600">1 hour</option>
+          <option [value]="86400">24 hours</option>
+          <option [value]="604800">7 days</option>
+        </select>
+      </div>
+      <button type="submit" class="btn primary" style="width:auto">Save</button>
+    </form>
+    <small>Current default: {{ ttl }} seconds</small>
+
+    <hr />
+    <h3>Password Reset</h3>
+    <p class="note">Need a reset link? Use the Forgot password option from the login page.</p>
+  </div>
+  <ng-template #noUser>
+    <p>You are not signed in.</p>
+  </ng-template>
+</section>
+

@@ -1,0 +1,109 @@
+/* Global Matrix vibe */
+:root {
+  --matrix-bg: #0a0f0a;
+  --matrix-green: #00ff95;
+  --matrix-green-dim: #00c276;
+  --matrix-text: #b9f6ca;
+}
+
+html, body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  background: radial-gradient(1000px 600px at 10% 10%, rgba(0, 255, 149, 0.05), transparent 50%),
+              radial-gradient(800px 500px at 90% 20%, rgba(0, 255, 149, 0.04), transparent 50%),
+              linear-gradient(180deg, #000 0%, var(--matrix-bg) 100%);
+  color: var(--matrix-text);
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+}
+
+/* Navbar */
+nav {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  padding: 10px 16px;
+  background:
+    linear-gradient(180deg, rgba(0, 255, 149, 0.06), rgba(0, 0, 0, 0.0)) 0 0/100% 100%,
+    rgba(0, 0, 0, 0.55);
+  backdrop-filter: blur(6px);
+  border-bottom: 1px solid rgba(0, 255, 149, 0.14);
+  box-shadow: 0 2px 12px rgba(0, 255, 149, 0.08);
+  flex-wrap: wrap;
+}
+nav button {
+  appearance: none;
+  background: transparent;
+  color: var(--matrix-green);
+  border: 1px solid rgba(0, 255, 149, 0.28);
+  padding: 8px 14px;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: transform .06s ease, box-shadow .15s ease, border-color .15s ease, background .15s ease, color .15s ease;
+  text-transform: uppercase;
+  letter-spacing: .06em;
+  font-weight: 700;
+}
+nav button:hover {
+  border-color: rgba(0, 255, 149, 0.6);
+  box-shadow: 0 0 0 2px rgba(0, 255, 149, 0.12) inset, 0 0 12px rgba(0, 255, 149, 0.1);
+}
+nav button:active { transform: translateY(1px); }
+nav button.active {
+  color: #001b10;
+  background: linear-gradient(180deg, var(--matrix-green), var(--matrix-green-dim));
+  border-color: var(--matrix-green);
+  box-shadow: 0 2px 10px rgba(0, 255, 149, 0.18);
+}
+nav button p { margin: 0; }
+
+@media (max-width: 560px) {
+  nav { gap: 8px; padding: 8px 10px; }
+  nav button { padding: 7px 12px; letter-spacing: .04em; }
+}
+
+/* App container */
+router-outlet + * {
+  display: block;
+  max-width: 1000px;
+  margin: 24px auto;
+  padding: 12px;
+}
+
+/* Auth/Card helpers */
+.auth-container { display: grid; place-items: center; min-height: calc(100vh - 64px); padding: 16px; }
+.card { width: 100%; max-width: 440px; background: rgba(0, 0, 0, 0.6); border: 1px solid rgba(0, 255, 149, 0.2); border-radius: 12px; padding: 24px; box-shadow: 0 10px 30px rgba(0, 255, 149, 0.08); }
+.card h2 { color: var(--matrix-green); margin: 0 0 4px; }
+.subtitle { color: #8fe8ba; margin: 0 0 16px; opacity: .9; }
+.form .field { display: grid; gap: 6px; margin-bottom: 12px; }
+.form label { color: #8fe8ba; font-size: 12px; }
+.form input {
+  background: rgba(0, 0, 0, 0.4);
+  color: var(--matrix-text);
+  border: 1px solid rgba(0, 255, 149, 0.25);
+  border-radius: 6px;
+  outline: none;
+  padding: 10px 12px;
+}
+.form input:focus { border-color: var(--matrix-green); box-shadow: 0 0 0 3px rgba(0,255,149,.1); }
+.btn.primary {
+  width: 100%;
+  background: var(--matrix-green);
+  color: #001b10;
+  border: none;
+  border-radius: 6px;
+  padding: 10px 12px;
+  cursor: pointer;
+  font-weight: 700;
+  transition: box-shadow .15s ease, transform .06s ease;
+}
+.btn.primary:hover { box-shadow: 0 0 0 3px rgba(0,255,149,.12), 0 6px 24px rgba(0,255,149,.12); }
+.btn.primary:active { transform: translateY(1px); }
+.alert { border-radius: 6px; padding: 8px 10px; margin-bottom: 10px; }
+.alert.error { background: rgba(255,0,0,.08); color: #ffaaaa; border: 1px solid rgba(255,0,0,.25); }
+.alert.info { background: rgba(0,255,149,.08); color: var(--matrix-text); border: 1px solid rgba(0,255,149,.25); }
+.note { color: #8fe8ba; font-size: 12px; opacity: .9; }

@@ -1,0 +1,41 @@
+<div class="chat-layout">
+  <aside class="sidebar">
+    <div class="section">
+      <div class="section-title">Rooms</div>
+      <button class="room" [class.active]="activeRoom==='global'" (click)="setGlobal()"># Global</button>
+    </div>
+    <div class="section">
+      <div class="section-title">Direct Messages</div>
+      <input class="search" placeholder="Search users" [(ngModel)]="query" name="query" />
+      <div class="user-list">
+        <button class="user" *ngFor="let u of (users$|async)" (click)="openDm(u)">
+          <span class="dot" [class.on]="true"></span>{{u.name}}
+        </button>
+        <button class="user offline" *ngFor="let u of offlineUsers()" (click)="openDm(u)">
+          <span class="dot"></span>{{u.name}}
+        </button>
+      </div>
+    </div>
+  </aside>
+
+  <main class="chat">
+    <div class="chat-header">
+      <span *ngIf="activeRoom==='global'"># Global chat</span>
+      <span *ngIf="activeRoom==='dm' && activeUser">&#64; {{activeUser?.name}}</span>
+      <span class="status" [class.on]="(connected$|async)"></span>
+    </div>
+
+    <div class="messages" #messagesEl>
+      <div class="msg" *ngFor="let m of messages">
+        <span class="from">{{m.fromName}}</span>
+        <span class="text">{{m.text}}</span>
+        <span class="time">{{m.at | date:'shortTime'}}</span>
+      </div>
+    </div>
+
+    <form class="composer" (ngSubmit)="send()">
+      <input placeholder="Type a message" [(ngModel)]="draft" name="draft" />
+      <button type="submit">Send</button>
+    </form>
+  </main>
+</div>

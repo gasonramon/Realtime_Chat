@@ -1,0 +1,40 @@
+<div class="auth-container">
+  <div class="card">
+    <h2>Create account</h2>
+    <p class="subtitle">Join the chat in seconds</p>
+
+    <div *ngIf="error" class="alert error">{{ error }}</div>
+
+    <form (ngSubmit)="submit()" novalidate class="form">
+      <div class="field">
+        <label for="email">Email</label>
+        <input id="email" name="email" type="email" [(ngModel)]="email" required />
+      </div>
+
+      <div class="field">
+        <label for="username">Username</label>
+        <input id="username" name="username" [(ngModel)]="username" required />
+      </div>
+
+      <div class="field">
+        <label for="password">Password</label>
+        <input id="password" name="password" type="password" [(ngModel)]="password" required />
+      </div>
+
+      <div class="field">
+        <label for="confirm">Confirm password</label>
+        <input id="confirm" name="confirm" type="password" [(ngModel)]="confirm" required />
+      </div>
+
+      <p class="note">Note: 2FA is required on login. You'll receive a code by email after signing in.</p>
+
+      <button type="submit" class="btn primary" [disabled]="loading">
+        {{ loading ? 'Registering…' : 'Create account' }}
+      </button>
+
+      <div class="links">
+        <a routerLink="/login">Already have an account? Sign in</a>
+      </div>
+    </form>
+  </div>
+</div>
