@@ -65,7 +65,7 @@ async fn main() {
 
     // Configure CORS to allow credentials
     let cors = CorsLayer::new()
-        .allow_origin("http://localhost:4200".parse::<http::HeaderValue>().unwrap())
+        .allow_origin("http://178.105.65.147:8081".parse::<http::HeaderValue>().unwrap())
         .allow_methods([Method::GET, Method::POST, Method::PUT, Method::DELETE, Method::OPTIONS])
         .allow_headers([AUTHORIZATION, CONTENT_TYPE])
         .allow_credentials(true);
