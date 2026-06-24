@@ -1,0 +1,17 @@
+{
+  "db_name": "PostgreSQL",
+  "query": "INSERT INTO dm_key_exchanges (from_user_id, to_user_id, encrypted_key, key_id, delivered)\n                       VALUES ($1, $2, $3, $4, FALSE)",
+  "describe": {
+    "columns": [],
+    "parameters": {
+      "Left": [
+        "Uuid",
+        "Uuid",
+        "Text",
+        "Text"
+      ]
+    },
+    "nullable": []
+  },
+  "hash": "adc0ed10bad139f003f25bbd2becf21b068871037b60483953a58a8bf8e5232b"
+}

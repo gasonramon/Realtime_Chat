@@ -1,0 +1,64 @@
+{
+  "db_name": "PostgreSQL",
+  "query": "SELECT m.id, m.sender_id, u.name as sender_name, m.encrypted_content, m.recipients, m.created_at, m.room, m.expires_at\n           FROM messages m\n           JOIN users u ON u.id = m.sender_id\n           WHERE (m.room = 'global' OR m.sender_id = $1 OR $1 = ANY(m.recipients))\n             AND m.expires_at > NOW()\n           ORDER BY m.created_at DESC\n           LIMIT 50",
+  "describe": {
+    "columns": [
+      {
+        "ordinal": 0,
+        "name": "id",
+        "type_info": "Text"
+      },
+      {
+        "ordinal": 1,
+        "name": "sender_id",
+        "type_info": "Uuid"
+      },
+      {
+        "ordinal": 2,
+        "name": "sender_name",
+        "type_info": "Varchar"
+      },
+      {
+        "ordinal": 3,
+        "name": "encrypted_content",
+        "type_info": "Text"
+      },
+      {
+        "ordinal": 4,
+        "name": "recipients",
+        "type_info": "UuidArray"
+      },
+      {
+        "ordinal": 5,
+        "name": "created_at",
+        "type_info": "Timestamptz"
+      },
+      {
+        "ordinal": 6,
+        "name": "room",
+        "type_info": "Text"
+      },
+      {
+        "ordinal": 7,
+        "name": "expires_at",
+        "type_info": "Timestamptz"
+      }
+    ],
+    "parameters": {
+      "Left": [
+        "Uuid"
+      ]
+    },
+    "nullable": [
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false
+    ]
+  },
+  "hash": "3247cfedf37175b073ae44139d3eeeea2aa84c928d6d178fdf4687253693634f"
+}

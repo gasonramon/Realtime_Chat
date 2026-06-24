@@ -1,0 +1,46 @@
+{
+  "db_name": "PostgreSQL",
+  "query": "SELECT id, from_user_id, to_user_id, encrypted_key, key_id\n           FROM dm_key_exchanges\n           WHERE to_user_id = $1 AND delivered = FALSE\n           ORDER BY created_at ASC",
+  "describe": {
+    "columns": [
+      {
+        "ordinal": 0,
+        "name": "id",
+        "type_info": "Uuid"
+      },
+      {
+        "ordinal": 1,
+        "name": "from_user_id",
+        "type_info": "Uuid"
+      },
+      {
+        "ordinal": 2,
+        "name": "to_user_id",
+        "type_info": "Uuid"
+      },
+      {
+        "ordinal": 3,
+        "name": "encrypted_key",
+        "type_info": "Text"
+      },
+      {
+        "ordinal": 4,
+        "name": "key_id",
+        "type_info": "Text"
+      }
+    ],
+    "parameters": {
+      "Left": [
+        "Uuid"
+      ]
+    },
+    "nullable": [
+      false,
+      false,
+      false,
+      false,
+      false
+    ]
+  },
+  "hash": "1529c193a7cc8daaa3ea159bed411ca9cfd3d117603c10f64c78d0114733d506"
+}

@@ -1,0 +1,12 @@
+{
+  "db_name": "PostgreSQL",
+  "query": "DELETE FROM messages WHERE expires_at < NOW()",
+  "describe": {
+    "columns": [],
+    "parameters": {
+      "Left": []
+    },
+    "nullable": []
+  },
+  "hash": "c41b6f0e23b54556ea9e16859db8f82ed8abbbb47a234cbb9bdf21bb21640d5f"
+}

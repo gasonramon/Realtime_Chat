@@ -1,0 +1,14 @@
+{
+  "db_name": "PostgreSQL",
+  "query": "UPDATE dm_key_exchanges SET delivered = TRUE WHERE id = ANY($1)",
+  "describe": {
+    "columns": [],
+    "parameters": {
+      "Left": [
+        "UuidArray"
+      ]
+    },
+    "nullable": []
+  },
+  "hash": "e24c97fcb3da09f44f5e9791284401e8791c897a2466e92e05e1e1eb637e413d"
+}
