@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  apiUrl: 'http://chat.jasonleijdekker.com/api',
+  apiUrl: 'https://chat.jasonleijdekker.com/api',
 };

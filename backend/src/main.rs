@@ -65,7 +65,7 @@ async fn main() {
 
     // Configure CORS to allow credentials
     let cors = CorsLayer::new()
-        .allow_origin("http://chat.jasonleijdekker.com".parse::<http::HeaderValue>().unwrap())
+        .allow_origin("https://chat.jasonleijdekker.com".parse::<http::HeaderValue>().unwrap())
         .allow_methods([Method::GET, Method::POST, Method::PUT, Method::DELETE, Method::OPTIONS])
         .allow_headers([AUTHORIZATION, CONTENT_TYPE])
         .allow_credentials(true);
